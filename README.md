@@ -10,4 +10,8 @@ bun dev
 
 ## sqlite , Prisma for dataBaseConnection
 
+- npm i prisma
+- npx prisma init --datasource-provider sqlite
+- npx prisma migrate dev
+
 ## Deploy on Vercel
