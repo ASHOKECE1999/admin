@@ -7,7 +7,7 @@ const Users = () => {
       <div className="flex justify-between items-center">
         <h1 className="font-semibold text-2xl p-2">User Management</h1>
         <button>
-          <Link href="/users" className="custom-primary-btn">
+          <Link href="/users/add" className="custom-primary-btn">
             Add User
           </Link>
         </button>

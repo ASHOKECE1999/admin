@@ -17,7 +17,18 @@
   .custom-table {
     @apply overflow-y-auto w-10/12 mx-auto;
   }
-}
-.custom-table th {
-  @apply p-3;
+  .custom-table th {
+    @apply p-3;
+  }
+  .custom-input {
+    @apply h-12 w-full border  border-olive-200 shadow-lg  text-black rounded-md p-3 text-base placeholder:text-gray-400 
+    focus-visible:outline-none  
+    focus-visible:ring-2 focus-visible:ring-blue-400 disabled:cursor-not-allowed disabled:opacity-50
+     group-hover/input:shadow-none;
+  }
+
+  .custom-submit-button {
+    @apply rounded font-medium  text-white text-base lg:text-lg leading-5 lg:leading-6 bg-blue-800
+    hover:shadow-xl disabled:pointer-events-none disabled:bg-gray-500 disabled:text-black/50 px-5 py-3 w-full;
+  }
 }
