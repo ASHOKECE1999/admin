@@ -1,3 +1,4 @@
+"use server";
 import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -5,8 +6,6 @@ import bcrypt from "bcrypt";
 
 export const createUser = async (userData) => {
   "use server";
-  console.log("ashok");
-  console.log("userData", userData);
   const salt = bcrypt.genSaltSync(5);
   const hashedPassword = await bcrypt.hashSync(userData.get("password"), salt);
   const isUserExist = await db.adminUser.findUnique({
@@ -39,4 +38,15 @@ export const getAllUsers = async () => {
   const users = await db.adminUser.findMany();
   console.log("users", users);
   return users;
+};
+
+export const deleteUser = async (userId) => {
+  console.log("delete user with id", userId);
+  await db.adminUser.delete({
+    where: {
+      id: userId,
+    },
+  });
+  revalidatePath("/users", "page");
+  // redirect("/users");
 };

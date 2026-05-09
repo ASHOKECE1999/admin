@@ -1,8 +1,16 @@
+"use client";
+import { deleteUser } from "@/actions/UserActions";
 import { DeleteIcon, EditIcon } from "@/components/icon";
 import Link from "next/link";
 import React from "react";
 
 const UsersScreen = ({ users }) => {
+  const handleDelete = async (userId) => {
+    await deleteUser(userId);
+  };
+
+  console.log("users in screen", users);
+
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -34,7 +42,10 @@ const UsersScreen = ({ users }) => {
                   <button className="custom-primary-btn">
                     <EditIcon />
                   </button>
-                  <button className="px-3 custom-danger-btn ">
+                  <button
+                    className="px-3 custom-danger-btn "
+                    onClick={() => handleDelete(user.id)}
+                  >
                     <DeleteIcon />
                   </button>
                 </td>
