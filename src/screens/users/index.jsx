@@ -1,7 +1,8 @@
+import { DeleteIcon, EditIcon } from "@/components/icon";
 import Link from "next/link";
 import React from "react";
 
-const UsersScreen = () => {
+const UsersScreen = ({ users }) => {
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -19,15 +20,26 @@ const UsersScreen = () => {
             <tr>
               <th>Sr.No</th>
               <th>User Name</th>
+              <th>User Type</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Ashok</td>
-              <td>ashok@example.com</td>
-              <td>Admin</td>
-            </tr>
+            {users.map((user, index) => (
+              <tr key={user.id} className="px-9 py-4 m-auto ">
+                <td className=" text-center">{index + 1}</td>
+                <td className=" text-center">{user.userName}</td>
+                <td className=" text-center">{user.userType}</td>
+                <td className=" flex justify-center">
+                  <button className="custom-primary-btn">
+                    <EditIcon />
+                  </button>
+                  <button className="px-3 custom-danger-btn ">
+                    <DeleteIcon />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -34,3 +34,9 @@ export const createUser = async (userData) => {
   revalidatePath("/users", "page");
   redirect("/users");
 };
+
+export const getAllUsers = async () => {
+  const users = await db.adminUser.findMany();
+  console.log("users", users);
+  return users;
+};
