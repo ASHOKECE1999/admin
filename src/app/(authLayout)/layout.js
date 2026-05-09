@@ -2,10 +2,12 @@ import React from "react";
 
 const AuthLayout = ({ children }) => {
   return (
-    <div>
-      <h1>Only For Logon</h1>
-      {children}
-    </div>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
+    </html>
   );
 };
 

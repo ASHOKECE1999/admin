@@ -4,10 +4,10 @@ import LabelComponent from "@/components/ui/Label";
 import AddUser from "@/screens/users/add";
 import React from "react";
 
-const AddUserPage = () => {
+const AddUserPage = ({ searchParams }) => {
   return (
     <>
-      <AddUser />
+      <AddUser searchParams={searchParams} />
     </>
   );
 };

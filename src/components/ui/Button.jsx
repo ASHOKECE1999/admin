@@ -1,15 +1,15 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 
-const Button = ({ className, onClick, children, ...props }) => {
+const Button = ({ className, children, ...props }) => {
   return (
-    <div
+    <button
       className={cn("custom-submit-button", className)}
-      onClick={onClick}
+      // onClick={onClick}
       {...props}
     >
       {children}
-    </div>
+    </button>
   );
 };
 
