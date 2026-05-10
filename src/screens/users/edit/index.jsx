@@ -1,5 +1,3 @@
-"use client";
-
 import { getUserById } from "@/actions/UserActions";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
