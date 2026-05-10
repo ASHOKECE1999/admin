@@ -1,15 +1,23 @@
-import { getUserById } from "@/actions/UserActions";
+"use client";
+
+import React from "react";
+
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import LabelComponent from "@/components/ui/Label";
-import React from "react";
 
-const EditUserPage = async ({ params }) => {
+import { editUserDetails, findUniqueUserDetails } from "@/actions/UserActions";
+
+const EditUserPage = ({ userId, userData }) => {
   // console.log("searchParams in edit page", searchParams.userId);
+  console.log("userData in edit page", userData);
   return (
     <div>
       <h1 className="text-3xl font-semibold p-2">Edit User</h1>
-      <form className="grid gap-x-6 gap-y-10 mt-10 grid-cols-2 px-2">
+      <form
+        className="grid gap-x-6 gap-y-10 mt-10 grid-cols-2 px-2"
+        action={(formData) => editUserDetails(formData, userId)}
+      >
         <div className="grid gap-2">
           <div className="text-sm lg:text-base h-fit">
             <LabelComponent required={true}>User Name</LabelComponent>
@@ -19,7 +27,7 @@ const EditUserPage = async ({ params }) => {
             placeholder="Enter User Name"
             className="custom-input"
             name="userName"
-            // defaultValue={userData.userName}
+            defaultValue={userData.userName}
           />
         </div>
         <div className="grid gap-2">
@@ -29,7 +37,7 @@ const EditUserPage = async ({ params }) => {
           <select
             className="custom-input bg-white curser-pointer appearance-none"
             name="userType"
-            // defaultValue={userData.userType}
+            defaultValue={userData.userType}
           >
             <option value="">Select User Type</option>
             <option value="Super Admin">Super Admin</option>
@@ -46,7 +54,7 @@ const EditUserPage = async ({ params }) => {
             placeholder="Enter Password "
             className="custom-input"
             name="password"
-            // defaultValue=""
+            defaultValue=""
           />
         </div>
         <div className="grid gap-2">
@@ -60,6 +68,7 @@ const EditUserPage = async ({ params }) => {
             placeholder="Enter Confirm Password"
             name="confirmPassword"
             className="custom-input"
+            defaultValue=""
           />
         </div>
         <div>

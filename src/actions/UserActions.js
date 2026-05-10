@@ -51,12 +51,34 @@ export const deleteUser = async (userId) => {
   // redirect("/users");
 };
 
-export const getUserById = async (userId) => {
+export const findUniqueUserDetails = async (userId) => {
   const user = await db.adminUser.findUnique({
     where: {
       id: userId,
     },
   });
-  // console.log("user in getUserById", user);
+
   return user;
+};
+
+export const editUserDetails = async (formData, userId) => {
+  const salt = await bcrypt.genSaltSync(5);
+  const hashedPassword = await bcrypt.hashSync(formData.get("password"), salt);
+
+  // console.log("isUserExist", isUserExist);
+  const data = {
+    userName: formData.get("userName"),
+    userType: formData.get("userType"),
+    password: hashedPassword,
+  };
+
+  await db.adminUser.update({
+    where: {
+      id: parseInt(userId),
+    },
+    data,
+  });
+
+  revalidatePath("/users", "page");
+  redirect("/users");
 };
