@@ -5,7 +5,7 @@ import React from "react";
 
 const UsersPage = async () => {
   const allUsers = await getAllUsers();
-  console.log("allUsers", allUsers);
+  // console.log("allUsers", allUsers);
   return (
     <>
       <UsersScreen users={allUsers} />

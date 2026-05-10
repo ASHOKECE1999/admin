@@ -9,7 +9,7 @@ const UsersScreen = ({ users }) => {
     await deleteUser(userId);
   };
 
-  console.log("users in screen", users);
+  // console.log("users in screen", users);
 
   return (
     <div>
@@ -39,9 +39,12 @@ const UsersScreen = ({ users }) => {
                 <td className=" text-center">{user.userName}</td>
                 <td className=" text-center">{user.userType}</td>
                 <td className=" flex justify-center">
-                  <button className="custom-primary-btn">
+                  <Link
+                    href={`/users/edit/${user.id}`}
+                    className="px-3 custom-primary-btn "
+                  >
                     <EditIcon />
-                  </button>
+                  </Link>
                   <button
                     className="px-3 custom-danger-btn "
                     onClick={() => handleDelete(user.id)}
