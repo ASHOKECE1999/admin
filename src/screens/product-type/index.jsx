@@ -5,21 +5,23 @@ import { DeleteIcon, EditIcon } from "@/components/icon";
 import DeleteConformationModel from "@/components/ui/DeleteConformationModel";
 import Link from "next/link";
 import React from "react";
+import { getAllProductTypes } from "@/actions/productTypeActions";
 
-const ProductTypes = () => {
+const ProductTypes = ({ allProductTypes }) => {
   const [isDeleteModelOpen, setIsDeleteModelOpen] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
 
-  const productTypes = [
-    {
-      id: 1,
-      name: "Kid's clothing",
-    },
-    {
-      id: 2,
-      name: "men's clothing",
-    },
-  ];
+  const productTypes = allProductTypes;
+  // const productTypes = [
+  //   {
+  //     id: 1,
+  //     name: "Kid's clothing",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "men's clothing",
+  //   },
+  // ];
 
   const handleDelete = (id) => {
     // Implement delete logic here, e.g., make an API call to delete the product type
@@ -44,7 +46,7 @@ const ProductTypes = () => {
             <tr>
               <th>Sr.No</th>
               <th>Product Type Name</th>
-              <th>Description</th>
+
               <th>Action</th>
             </tr>
           </thead>
@@ -53,7 +55,6 @@ const ProductTypes = () => {
               <tr key={productType.id} className="px-9 py-4 m-auto ">
                 <td className=" text-center">{index + 1}</td>
                 <td className=" text-center">{productType.name}</td>
-                <td className=" text-center">Product Type</td>
                 <td className=" flex justify-center">
                   <Link
                     href={`/product-type/edit/${productType.id}`}

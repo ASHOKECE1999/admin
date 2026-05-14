@@ -1,3 +1,4 @@
+import { createProductType } from "@/actions/productTypeActions";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import LabelComponent from "@/components/ui/Label";
@@ -7,10 +8,10 @@ const AddProductType = ({ searchParams }) => {
   const { errorMessage } = searchParams;
   return (
     <div>
-      <h1 className="text-3xl font-semibold p-2">Add User</h1>
+      <h1 className="text-3xl font-semibold p-2">Add Product Type</h1>
       <form
         className="grid gap-x-6 gap-y-10 mt-10 grid-cols-2 px-2"
-        // action={createUser}
+        action={createProductType}
       >
         {errorMessage && (
           <div className="col-span-2 border border-red-500 rounded-xl px-5 py-3 bg-red-50  w-fit">
@@ -27,7 +28,7 @@ const AddProductType = ({ searchParams }) => {
             type="text"
             placeholder="Enter Product Name"
             className="custom-input"
-            name="productName"
+            name="name"
           />
         </div>
         <div className="grid gap-2"> </div>
