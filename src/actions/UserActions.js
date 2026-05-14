@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
 
 export const createUser = async (userData) => {
+  console.log("userData in action", userData);
   const salt = await bcrypt.genSaltSync(5);
   const hashedPassword = await bcrypt.hashSync(userData.get("password"), salt);
   const isUserExist = await db.adminUser.findUnique({
@@ -30,6 +31,7 @@ export const createUser = async (userData) => {
       password: data.password,
     },
   });
+  console.log("user created successfully");
   revalidatePath("/users", "page");
   redirect("/users");
 };
@@ -80,5 +82,5 @@ export const editUserDetails = async (formData, userId) => {
   });
 
   revalidatePath("/users", "page");
-  redirect("/users");
+  // redirect("/users");
 };
