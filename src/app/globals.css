@@ -34,4 +34,8 @@
     @apply rounded font-medium  text-white text-base lg:text-lg leading-5 lg:leading-6 bg-blue-800
     hover:shadow-xl disabled:pointer-events-none disabled:bg-gray-500 disabled:text-black/50 px-5 py-3 w-full;
   }
+
+  .close-icon-button {
+    @apply text-gray-400 absolute top-2.5 right-2.5 bg-transparent rounded-lg ml-auto text-base p-1.5  inline-flex items-center hover:bg-gray-200 hover:text-gray-900;
+  }
 }

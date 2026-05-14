@@ -1,12 +1,17 @@
 "use client";
 import { deleteUser } from "@/actions/UserActions";
+import React, { useState } from "react";
 import { DeleteIcon, EditIcon } from "@/components/icon";
+import DeleteConformationModel from "@/components/ui/DeleteConformationModel";
 import Link from "next/link";
-import React from "react";
 
 const UsersScreen = ({ users }) => {
+  const [isDeleteModelOpen, setIsDeleteModelOpen] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+
   const handleDelete = async (userId) => {
     await deleteUser(userId);
+    setIsDeleteModelOpen(false);
   };
 
   // console.log("users in screen", users);
@@ -47,7 +52,10 @@ const UsersScreen = ({ users }) => {
                   </Link>
                   <button
                     className="px-3 custom-danger-btn "
-                    onClick={() => handleDelete(user.id)}
+                    onClick={() => {
+                      setIsDeleteModelOpen(true);
+                      setSelectedUserId(user.id);
+                    }}
                   >
                     <DeleteIcon />
                   </button>
@@ -56,6 +64,13 @@ const UsersScreen = ({ users }) => {
             ))}
           </tbody>
         </table>
+        {isDeleteModelOpen && (
+          <DeleteConformationModel
+            isOpen={isDeleteModelOpen}
+            onCancel={() => setIsDeleteModelOpen(false)}
+            handleConform={() => handleDelete(selectedUserId)}
+          />
+        )}
       </div>
     </div>
   );
