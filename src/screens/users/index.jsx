@@ -22,9 +22,9 @@ const UsersScreen = ({ users }) => {
         </button>
       </div>
       <hr className="my-5" />
-      <div className="mt-20">
-        <table className="custom-table">
-          <thead className="border-y-2 border-gray-400">
+      <div className="mt-20 max-h-125 overflow-y-auto rounded">
+        <table className="custom-table overflow-y-auto max-h-11/12">
+          <thead className="sticky top-0 bg-white z-10 border-b-2 border-t-2 border-gray-400 shadow-sm">
             <tr>
               <th>Sr.No</th>
               <th>User Name</th>
@@ -32,7 +32,7 @@ const UsersScreen = ({ users }) => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="overflow-y-scroll max-h-96">
             {users.map((user, index) => (
               <tr key={user.id} className="px-9 py-4 m-auto ">
                 <td className=" text-center">{index + 1}</td>
