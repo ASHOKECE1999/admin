@@ -66,5 +66,5 @@ export const deleteProductType = async (productId) => {
     },
   });
   revalidatePath("/product-type", "page");
-  redirect("/product-type");
+  // redirect("/product-type");
 };

@@ -87,5 +87,14 @@ export const deleteProduct = async (productId) => {
     where: { id: parseInt(productId) },
   });
   revalidatePath("/products", "page");
-  redirect("/products");
+};
+
+export const getProductDetailsById = async (productId) => {
+  const product = await db.product.findUnique({
+    where: { id: parseInt(productId) },
+    include: {
+      productType: true,
+    },
+  });
+  return product;
 };

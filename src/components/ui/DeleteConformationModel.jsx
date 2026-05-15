@@ -3,7 +3,7 @@ import { CloseIcon, DeleteIcon } from "../icon";
 import Button from "./Button";
 
 const DeleteConformationModel = ({ isOpen, onCancel, handleConform }) => {
-  if (!isOpen) return null;
+  // if (!isOpen) return null;
   const closeModel = () => {
     onCancel();
   };

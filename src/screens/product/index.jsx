@@ -12,8 +12,10 @@ const ProductManagementPage = ({ products }) => {
   const [isDeleteModelOpen, setIsDeleteModelOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const handleDelete = async (selectedProduct) => {
-    await deleteProduct(selectedProduct);
+  const handleDelete = async (productId) => {
+    console.log("Deleting product with ID:", productId);
+    console.log("deleteProduct function:", selectedProduct);
+    await deleteProduct(productId);
     setIsDeleteModelOpen(false);
   };
 
@@ -77,7 +79,7 @@ const ProductManagementPage = ({ products }) => {
                 <td>
                   <div className="flex">
                     <Link
-                      href={`/products/edit/1`}
+                      href={`/products/edit/${product.id}`}
                       className="px-3 custom-primary-btn "
                     >
                       <EditIcon />
