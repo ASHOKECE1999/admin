@@ -5,25 +5,19 @@ import { DeleteIcon, EditIcon } from "@/components/icon";
 import DeleteConformationModel from "@/components/ui/DeleteConformationModel";
 import Link from "next/link";
 import React from "react";
-import { getAllProductTypes } from "@/actions/productTypeActions";
+import {
+  deleteProductType,
+  getAllProductTypes,
+} from "@/actions/productTypeActions";
 
 const ProductTypes = ({ allProductTypes }) => {
   const [isDeleteModelOpen, setIsDeleteModelOpen] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
 
   const productTypes = allProductTypes;
-  // const productTypes = [
-  //   {
-  //     id: 1,
-  //     name: "Kid's clothing",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "men's clothing",
-  //   },
-  // ];
 
   const handleDelete = (id) => {
+    deleteProductType(id);
     // Implement delete logic here, e.g., make an API call to delete the product type
     console.log(`Deleting product type with id: ${id}`);
     setIsDeleteModelOpen(false);

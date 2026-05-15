@@ -58,3 +58,13 @@ export const editProductTypeDetails = async (formData, productId) => {
   revalidatePath("/product-type", "page");
   redirect("/product-type");
 };
+
+export const deleteProductType = async (productId) => {
+  await db.productType.delete({
+    where: {
+      id: parseInt(productId),
+    },
+  });
+  revalidatePath("/product-type", "page");
+  redirect("/product-type");
+};
